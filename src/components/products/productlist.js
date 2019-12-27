@@ -3,8 +3,8 @@ import ProductSummary from './productSummary'
 
 function ProductList({products}) {
     return (
-        <div className="grid-container">
-            <div className="grid-x">
+        <div className="container">
+            <div className="row row-cols-4">
             {products && products.map(product=>{
                 return(
                     <div className="cell small-3" key={product.id}>

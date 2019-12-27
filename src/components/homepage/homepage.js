@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import ProductList from '../products/productlist'
 import { connect } from 'react-redux';
 import { getProducts } from '../../store/action/productActions';
+import Cart from '../cart/Cart';
 
 class Homepage extends Component {
     componentDidMount(){
         this.props.getProducts();
     }
     render() {
-        var {products} = this.props;
-        console.log(products);
+        var {products} = this.props;         
         return (
-            <div>
-                <div>
+            <div className="row">
+                <div className="col-9">
                     {products!=null && <ProductList products={products.products}/>}
                 </div>
-                <div>
-
+                <div className="col-3">
+                    <Cart products={this.props.addedProducts} sumOfAddedProcuts={this.props.sumOfAddedProcuts}/>
                 </div>
             </div>
         )
@@ -24,7 +24,9 @@ class Homepage extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-      products: state.products
+      products: state.products,
+      addedProducts: state.addedProducts,
+      sumOfAddedProcuts: state.sumOfAddedProcuts
     };
   };
   
