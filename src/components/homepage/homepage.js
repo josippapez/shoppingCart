@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import ProductList from '../products/productlist'
-import jsondata from '../../products.json'
+import { connect } from 'react-redux';
+import { getProducts } from '../../store/action/productActions';
 
 class Homepage extends Component {
+    componentDidMount(){
+        this.props.getProducts();
+    }
     render() {
-        console.log(jsondata.products);
+        var {products} = this.props;
+        console.log(products);
         return (
             <div>
                 <div>
-                    {jsondata!=null && <ProductList products={jsondata.products}/>}
+                    {products!=null && <ProductList products={products.products}/>}
                 </div>
                 <div>
 
@@ -17,4 +22,16 @@ class Homepage extends Component {
         )
     }
 }
-export default Homepage;
+const mapStateToProps = (state) => {
+    return {
+      products: state.products
+    };
+  };
+  
+  const mapStateToDispatch = (dispatch) => {
+    return {
+        getProducts: () => dispatch(getProducts())
+    };
+  };
+  
+  export default connect(mapStateToProps, mapStateToDispatch)(Homepage);
