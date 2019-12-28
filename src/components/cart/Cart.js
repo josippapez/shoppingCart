@@ -2,7 +2,7 @@ import React from 'react'
 import CartSummary from './CartSummary';
 import { useDispatch } from 'react-redux';
 
-function Cart ({products, sumOfAddedProcuts}){
+function Cart ({products, sumOfAddedProducts}){
     const dispatch= useDispatch();
     dispatch({type:'GET_CALCULATED_SUM'})
     return(
@@ -10,10 +10,10 @@ function Cart ({products, sumOfAddedProcuts}){
             <label>KOŠARICA</label>
             {products.length>0 && products.map(product=>{    
                 return(
-                   <CartSummary product={product.product} key={product.product.id}/>
+                   <CartSummary product={product} key={product.id}/>
                 )
             })}
-            {sumOfAddedProcuts>0 && <label>UKUPNO: {sumOfAddedProcuts}</label>}
+            {sumOfAddedProducts>0 && <label>UKUPNO: {sumOfAddedProducts}</label>}
         </div>
     )
 }

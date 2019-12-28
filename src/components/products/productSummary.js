@@ -5,7 +5,7 @@ import { addProduct, calculateSumOfProducts } from '../../store/action/productAc
 function ProductSummary({product}) {
     const dispatch= useDispatch();
     function handleOnClick(){
-        dispatch(addProduct({product}));
+        dispatch(addProduct(product));
         dispatch(calculateSumOfProducts(product.price.amount));
     }
     return (

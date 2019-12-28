@@ -16,7 +16,7 @@ class Homepage extends Component {
                     {products!=null && <ProductList products={products.products}/>}
                 </div>
                 <div className="col-3">
-                    <Cart products={this.props.addedProducts} sumOfAddedProcuts={this.props.sumOfAddedProcuts}/>
+                    <Cart products={this.props.addedProducts} sumOfAddedProducts={this.props.sumOfAddedProducts}/>
                 </div>
             </div>
         )
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
     return {
       products: state.products,
       addedProducts: state.addedProducts,
-      sumOfAddedProcuts: state.sumOfAddedProcuts
+      sumOfAddedProducts: state.sumOfAddedProducts
     };
   };
   
