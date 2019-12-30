@@ -10,6 +10,7 @@ export const getProducts=()=>{
 
 export const addProduct=(product)=>{
     return (dispatch,getState)=>{
+        dispatch(calculateSumOfProducts(product.price.amount));
         dispatch({type:'ADD_PRODUCT', addedProducts:product});
     }
 }
@@ -17,7 +18,7 @@ export const addProduct=(product)=>{
 export const removeProduct=(product, price)=>{
     return (dispatch,getState)=>{
         dispatch({type:'REMOVE_PRODUCT', removedProduct:product});
-        sum=sum-price;
+        dispatch(calculateSumOfProducts(-(price)));
     }
 }
 

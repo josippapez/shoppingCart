@@ -18,9 +18,12 @@ const rootReducer= (state=initState,action) =>{
         case 'REMOVE_PRODUCT':
             console.log('Removed product:', action.removedProduct)
             console.log("Result", state.addedProducts);
-            var result = state.addedProducts.filter(product => product.id !== action.removedProduct.id);
-            console.log("Result", result);
-            return {...state, addedProducts:result, sumOfAddedProducts:0};
+            var index = state.addedProducts.findIndex(product => product.name===action.removedProduct.name);
+            console.log(index);
+            
+            var removed = state.addedProducts.splice(index,1); 
+            console.log("Result", removed);
+            return {...state, addedProducts:[...removed], sumOfAddedProducts:0};
         case 'CALCULATE_SUM':
             console.log('Calculated:', action.sumOfAddedProducts)
             return {...state, sumOfAddedProducts:action.sumOfAddedProducts};

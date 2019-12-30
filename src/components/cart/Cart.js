@@ -1,10 +1,7 @@
 import React from 'react'
 import CartSummary from './CartSummary';
-import { useDispatch } from 'react-redux';
 
 function Cart ({products, sumOfAddedProducts}){
-    const dispatch= useDispatch();
-    dispatch({type:'GET_CALCULATED_SUM'})
     return(
         <div className="container">
             <label>KOŠARICA</label>

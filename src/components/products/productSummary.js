@@ -1,12 +1,11 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { addProduct, calculateSumOfProducts } from '../../store/action/productActions';
+import { addProduct } from '../../store/action/productActions';
 
 function ProductSummary({product}) {
     const dispatch= useDispatch();
     function handleOnClick(){
         dispatch(addProduct(product));
-        dispatch(calculateSumOfProducts(product.price.amount));
     }
     return (
         <div className="card shadow-lg m-2">
